@@ -1,0 +1,11 @@
+{
+  "name": "curves",
+  "version": "1.0.0",
+  "description": "",
+  "main": "pamphlet.js",
+  "scripts": {
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
