@@ -69,4 +69,41 @@ wave color:
 
 You can think of this graphic as like a fancy border or separator between content sections, so it needs to be long ans skinny.
 Therefore, in diemensions, I used width: 960 height: 300
-Then download it as an svg. Then create a css class called .spacer .*/
+Then download it as an svg. Then create a css class called .spacer .
+We wanna use the css aspect ration property, so instead of trying to manage the width and height of the element, we can use
+the aspect-ratio and set it to whatever value we used for the aspect ratio on the image, then we use the image as a background
+on whatever element has this class. The image should take up the entire element, so we set the background-repeat to no-repeat,
+position it in the center and ... .
+We may want to use this class multiple times so I'm creating a second class that defines the background-image as the svg graphic
+that we just downloaded and named that class .layer1 .
+
+Then in html, add an empty div with these created classes in order to apply that image as the transition between two <section>s .
+Now again using an empty div like that is sometimes considered a bad practice, but in this case is acceptable and it's the easiest way
+to get the job done.
+
+Now with js, we wanna create an animated morphing svg.
+Add a class named pink and add those spacer divs on either side of it and the top .spacer div has a class of .flip because we need
+that one to do a 180.
+The .flip class is a utiility that will rotate the element by 180deg.
+
+Now let's add a rotating blob at the middle. To generate the blob, in hikai app and create two random graphics. I've downloaded them into the
+project, but what we actually need, is the source code from the raw svg file. So take the svg code from one of the downloaded blobs and
+paste it down inside of the section and at the end of it.
+
+Inside of the svg code, you can see a <rect>, delete it.
+We're insterested in the <path> in that <svg> and that <path> is the shape of the blob itself, that gives us one blob in the svg,
+but we actually want a second blob in there as well. So go to blob2.svg and find the <g> element(group element) and copy it and it's children
+from the raw svg code and then paste it as the sibling of the previous <g> in there as second one.
+It's easier to use figma for this.
+At this point, you should see two blobs on top of each other. Now in order to animate one blob into the other, we need to give eacah
+<path> in there, an id which we'll call "blob1" and "blob2"
+The instructor has 2 files named blob1.svg and blob2.svg .
+Normally a morph animation is difficult to pull off but with Kute.js which feels kind of similar to green sock which both are animation libarries
+and to install it, all we have to do is to add the script tag for the cdn link to the <head> of the document and then we can write scripts
+by referencing a global object which is named KUTE and then it's fromTo() method and it'll use blob1 as the starting svg and then animate
+to the blob2 svg and as a final arg we can add an object with some options.
+With yoyo option, it will go back and forth between the two animation states.
+Then call the start() on animation and that's all it takes to create an svg morphing animation with JS.
+
+Now we need to make the second <g> (blob) to have a visibility: hiiden , so it's not visible when the animation first STARTS, then
+we add some positioning css to position the blob directly underneath the main content in that section, by creating .blob-motion class.*/
